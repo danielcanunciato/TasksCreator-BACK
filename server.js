@@ -10,37 +10,39 @@ const API = express();
 const PORT = process.env.PORT || 4000;
 const JWT_TOKEN = process.env.JWT_TOKEN || "JWTTKN";
 
+const COMMIT_NAME = "COMMIT_#02:57AM";
+
 // =====================================================
 // CORS Configuration - Add this before your routes
 // =====================================================
 const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'https://taskcreator.clooverlandstudios.com',
-  'https://tc-api.clooverlandstudios.com'
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://taskcreator.clooverlandstudios.com",
+  "https://tc-api.clooverlandstudios.com",
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    
+
     // Allow all in development
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
       return callback(null, true);
     }
-    
+
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      console.log('Blocked by CORS:', origin);
-      callback(new Error('Not allowed by CORS'));
+      console.log("Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 };
 
 API.use(cors(corsOptions));
@@ -48,9 +50,8 @@ API.use(express.json());
 
 API.options("*", cors(corsOptions));
 
-
 API.get("/", (req, res) => {
-    res.send("API is running");
+  res.send(`API is running :: ${COMMIT_NAME}`);
 });
 
 const SERVER_ERROR_DEFAULT = (err, res) => {
