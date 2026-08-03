@@ -1,14 +1,14 @@
 const mysql = require("mysql2/promise");
 
 const pool = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    port: 3306,
-    password: "admin",
-    database: "db_tasks",
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
+  host: "sql10.freesqldatabase.com",
+  user: "sql10834486",
+  port: 3306,
+  password: "8PVG2FfwIR",
+  database: "sql10834486",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 async function testConnection() {
