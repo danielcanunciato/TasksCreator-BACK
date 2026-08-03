@@ -46,6 +46,9 @@ const corsOptions = {
 API.use(cors(corsOptions));
 API.use(express.json());
 
+API.options("*", cors(corsOptions));
+
+
 API.get("/", (req, res) => {
     res.send("API is running");
 });
