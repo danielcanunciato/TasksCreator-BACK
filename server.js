@@ -8,7 +8,7 @@ const db = require("./db");
 
 const API = express();
 const PORT = process.env.PORT || 4000;
-const JWT_TOKEN = process.env.JWT_TOKEN;
+const JWT_TOKEN = process.env.JWT_TOKEN || "JWTTKN";
 
 // =====================================================
 // CORS Configuration - Add this before your routes
